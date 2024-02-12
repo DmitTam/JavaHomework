@@ -50,7 +50,6 @@ public class Main {
         String colour = "";
 
 
-
         Set<Notebook> notebooksFiltered = new HashSet<>();
         notebooksFiltered.addAll(filterAsOperMemory(notebooks, operMemory));
         notebooksFiltered.addAll(filterAsHardDriveVolume(notebooks, hdVolume));
@@ -59,98 +58,100 @@ public class Main {
 
         printSet(notebooksFiltered);
 
-        userInterface
-
-        printSet(notebooksFiltered);
-
-        static void userInterface{
-            Scanner scanner = new Scanner(System.in);
-            List<String> list = new LinkedList<>();
-            boolean work = true;
-            while (work){
-                System.out.println("Введите цифру, соответствующую необходимому критерию:\n" +
-                        "1 - ОЗУ\n" +
-                        "2 - Объем ЖД\n" +
-                        "3 - Операционная система\n" +
-                        "4 - Цвет\n" +
-                        "5 - Поиск");
-                String line = scanner.nextLine();
-                String[] arr = line.split("~");
-                String text = arr[0];
-                int num = Integer.parseInt(arr[1]);
-                if (num == 1){
-                        System.out.println("Введите объем оперативной памяти в Мб");
-                        operMemory = Integer.parseInt(scanner.nextLine());}
-                else if (num == 2){
-                        System.out.println("Введите объем жесткого диска в ГБ");
-                        hdVolume = Integer.parseInt(scanner.nextLine());}
-                else if (num == 3){
-                    System.out.println("Введите операционную систему");
-                    osType = String.valueOf(scanner.nextLine());}
-                else if (num == 4){
-                    System.out.println("Введите объем жесткого диска");
-                    colour = String.valueOf(scanner.nextLine());}
-                else if (num == 5){
-                    work = false;}
-                else  {
-                    System.out.println("Некорректный ввод. Введите цифру от 1 до 5");
-                    }
-                }
-            }
+        userInterface();
 
 
-            printSet(filterAsOperMemory(notebooks, operMemory), );
+
+
+//            printSet(filterAsOperMemory(notebooks, operMemory), );
 //        notebooks.forEach(notebook -> System.out.println(notebook));
         System.out.println();
     }
 
-    // static Map <Choise>
+    static void userInterface() {
+        int operMemory = 0;
+        int hdVolume = 0;
+        String osType = "";
+        String colour = "";
+        Scanner scanner = new Scanner(System.in);
+        boolean work = true;
+        while (work){
+            System.out.println("Введите цифру, соответствующую необходимому критерию:\n" +
+                    "1 - ОЗУ\n" +
+                    "2 - Объем ЖД\n" +
+                    "3 - Операционная система\n" +
+                    "4 - Цвет\n" +
+                    "5 - Поиск");
+            int num = Integer.parseInt(scanner.nextLine());
+            if (num == 1){
+                System.out.println("Введите объем оперативной памяти в Мб");
+                operMemory = Integer.parseInt(scanner.nextLine());}
+            else if (num == 2){
+                System.out.println("Введите объем жесткого диска в ГБ");
+                hdVolume = Integer.parseInt(scanner.nextLine());}
+            else if (num == 3){
+                System.out.println("Введите операционную систему");
+                osType = String.valueOf(scanner.nextLine());}
+            else if (num == 4){
+                System.out.println("Введите объем жесткого диска");
+                colour = String.valueOf(scanner.nextLine());}
+            else if (num == 5){
+                work = false;}
+            else  {
+                System.out.println("Некорректный ввод. Введите цифру от 1 до 5");
+            }
+        }
+    }
 
     static Set<Notebook> filterAsOperMemory(Set<Notebook> notebooks, int operMemory) {
         Set<Notebook> operMemoryset = new HashSet<>();
         for (Notebook notebook : notebooks) {
             if (notebook.operMemory == operMemory) {
-                operMemoryset.add(notebook);
-            }
+             operMemoryset.add(notebook);
         }
-        return operMemoryset;
     }
+    return operMemoryset;
+}
 
     static Set<Notebook> filterAsHardDriveVolume(Set<Notebook> notebooks, int hdVolume) {
         Set<Notebook> hDvolumeSet = new HashSet<>();
         for (Notebook notebook : notebooks) {
-            if (notebook.hardDriveVolume == hdVolume) {
-                hDvolumeSet.add(notebook);
-            }
+         if (notebook.hardDriveVolume == hdVolume) {
+               hDvolumeSet.add(notebook);
         }
-        return hDvolumeSet;
     }
+        return hDvolumeSet;
+}
 
     static Set<Notebook> filterAsOSType(Set<Notebook> notebooks, String osType) {
         Set<Notebook> OsTypeSet = new HashSet<>();
         for (Notebook notebook : notebooks) {
             if (notebook.os.equals(osType)) {
                 OsTypeSet.add(notebook);
-            }
         }
-        return OsTypeSet;
     }
+    return OsTypeSet;
+}
 
     static Set<Notebook> filterAsColour(Set<Notebook> notebooks, String colour) {
         Set<Notebook> ColourSet = new HashSet<>();
         for (Notebook notebook : notebooks) {
-            if (notebook.colour.equals(colour){
+            if (notebook.colour.equals(colour)){
                 ColourSet.add(notebook);
-            }
         }
-        return ColourSet;
     }
+        return ColourSet;
+}
 
     static void printSet(Set<Notebook> set) {
         for (Notebook notebook : set) {
             System.out.println(notebook);
-        }
-
-
     }
+
+
 }
+}
+
+
+
+
