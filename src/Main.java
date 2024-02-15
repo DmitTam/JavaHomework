@@ -1,6 +1,13 @@
 import java.util.*;
 
 public class Main {
+    int operMemory = 0;
+    int hdVolume = 0;
+    String osType = "";
+    String colour = "";
+
+
+
     public static void main(String[] args) {
         Notebook notebook1 = new Notebook();
         notebook1.name = "HP Pavilion Dv-6";
@@ -43,24 +50,12 @@ public class Main {
         notebooks.add(notebook3);
         notebooks.add(notebook4);
         notebooks.add(notebook5);
+        
 
-        int operMemory = 0;
-        int hdVolume = 0;
-        String osType = "";
-        String colour = "";
-
-
-        Set<Notebook> notebooksFiltered = new HashSet<>();
-        notebooksFiltered.addAll(filterAsOperMemory(notebooks, operMemory));
-        notebooksFiltered.addAll(filterAsHardDriveVolume(notebooks, hdVolume));
-        notebooksFiltered.addAll(filterAsColour(notebooks, colour));
-        notebooksFiltered.addAll(filterAsOSType(notebooks, osType));
-
-        printSet(notebooksFiltered);
-
-        userInterface();
-
-
+        Main main = new Main();
+        main.userInterface();
+        Main program = new Main();
+        printSet(program.createNewSet());
 
 
 //            printSet(filterAsOperMemory(notebooks, operMemory), );
@@ -68,11 +63,21 @@ public class Main {
         System.out.println();
     }
 
-    static void userInterface() {
-        int operMemory = 0;
-        int hdVolume = 0;
-        String osType = "";
-        String colour = "";
+    public Set<Notebook> createNewSet(){
+        Set<Notebook> notebooksFiltered = new HashSet<>();
+        notebooksFiltered.addAll(filterAsOperMemory(notebooksFiltered, this.operMemory));
+        notebooksFiltered.addAll(filterAsHardDriveVolume(notebooksFiltered, this.hdVolume));
+        notebooksFiltered.addAll(filterAsColour(notebooksFiltered, this.colour));
+        notebooksFiltered.addAll(filterAsOSType(notebooksFiltered, this.osType));
+
+        return notebooksFiltered;
+    }
+
+    void userInterface() {
+//        int operMemory = 0;
+//        int hdVolume = 0;
+//        String osType = "";
+//        String colour = "";
         Scanner scanner = new Scanner(System.in);
         boolean work = true;
         while (work){
@@ -85,16 +90,16 @@ public class Main {
             int num = Integer.parseInt(scanner.nextLine());
             if (num == 1){
                 System.out.println("Введите объем оперативной памяти в Мб");
-                operMemory = Integer.parseInt(scanner.nextLine());}
+                this.operMemory = Integer.parseInt(scanner.nextLine());}
             else if (num == 2){
                 System.out.println("Введите объем жесткого диска в ГБ");
-                hdVolume = Integer.parseInt(scanner.nextLine());}
+                this.hdVolume = Integer.parseInt(scanner.nextLine());}
             else if (num == 3){
                 System.out.println("Введите операционную систему");
-                osType = String.valueOf(scanner.nextLine());}
+                this.osType = String.valueOf(scanner.nextLine());}
             else if (num == 4){
                 System.out.println("Введите объем жесткого диска");
-                colour = String.valueOf(scanner.nextLine());}
+                this.colour = String.valueOf(scanner.nextLine());}
             else if (num == 5){
                 work = false;}
             else  {
